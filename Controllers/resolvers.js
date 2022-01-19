@@ -95,6 +95,10 @@ const resolvers = {
       if(found) {
         throw new UserInputError("User Already Exists!")
       } else {
+        if(username.length < 5) throw new UserInputError('Username should have at least 5 characters!')
+        if(!email.includes('@')) throw new UserInputError('Email should have @ symbol!')
+        if(password.length < 8) throw new UserInputError('Password should have at least 8 characters!')
+
         if(password == password2) {
           let salt = bcrypt.genSaltSync(10)
           let hash = bcrypt.hashSync(password, salt)
