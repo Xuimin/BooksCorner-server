@@ -239,7 +239,7 @@ const resolvers = {
       
       if(borrowCart) {
         const books = await borrowCart.cart.find(book => book.bookId === bookId)
-        if(books) throw new UserInputError("Already Added to BorrowCart")
+        if(books) throw new UserInputError("Already Added to Wishlist")
         else {
           borrowCart.cart.push({
             bookId,
