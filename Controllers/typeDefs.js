@@ -111,6 +111,7 @@ const typeDefs = gql`
     username: String
     rating: String
     comment: String
+    isEdited: Boolean
   }
 
   type Rating {
