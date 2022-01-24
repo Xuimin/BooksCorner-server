@@ -1,6 +1,8 @@
 const { ApolloServer } = require('apollo-server-express')
 const express = require('express');
 const cors = require('cors')
+require('dotenv').config()
+const { PORT } = process.env
 
 const typeDefs = require('./Controllers/typeDefs')
 const resolvers = require('./Controllers/resolvers')
@@ -22,8 +24,8 @@ async function startServer() {
   app.use(graphqlUploadExpress())
   server.applyMiddleware({ app })
 
-  await new Promise(r => app.listen({ port: 4000 }, r))
+  await new Promise(r => app.listen({ port: PORT }, r))
 
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
 }
 startServer();
