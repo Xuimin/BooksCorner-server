@@ -2,7 +2,7 @@ const { ApolloServer } = require('apollo-server-express')
 const express = require('express');
 const cors = require('cors')
 require('dotenv').config()
-const { PORT } = process.env
+const { PORT, DB_PASSWORD } = process.env
 
 const typeDefs = require('./Controllers/typeDefs')
 const resolvers = require('./Controllers/resolvers')
@@ -10,7 +10,8 @@ const { graphqlUploadExpress } = require('graphql-upload')
 
 const mongoose = require('mongoose')
 // mongoose.connect('mongodb://localhost:27017/BooksCorner')
-mongoose.connect("mongodb+srv://xuiminNcass:bookscorner@bookscorner.xejjs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+
+mongoose.connect(`mongodb+srv://xuiminNcass:${DB_PASSWORD}@bookscorner.xejjs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
 mongoose.connection.once('open', () => console.log('Connected to MongoDB'))
 
 async function startServer() {
