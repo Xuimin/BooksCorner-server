@@ -11,7 +11,7 @@ const { graphqlUploadExpress } = require('graphql-upload')
 const mongoose = require('mongoose')
 // mongoose.connect('mongodb://localhost:27017/BooksCorner')
 
-mongoose.connect(`mongodb+srv://xuiminNcass:${DB_PASSWORD}@bookscorner.xejjs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://BooksCorner:${DB_PASSWORD}@cluster0.r1odlbd.mongodb.net/?retryWrites=true&w=majority`)
 mongoose.connection.once('open', () => console.log('Connected to MongoDB'))
 
 async function startServer() {
